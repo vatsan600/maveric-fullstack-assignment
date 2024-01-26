@@ -2,6 +2,8 @@ package com.maveric.user.service;
 
 import com.maveric.user.entity.User;
 import com.maveric.user.repository.UserRepository;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import org.apache.logging.log4j.LogManager;
@@ -35,6 +37,11 @@ public class UserService {
 
   public User saveUser(User user) {
     logger.info("saving the users");
+    Date currentDate = Date.valueOf(LocalDate.now());
+    if (!Objects.nonNull(user.getCreatedAt())) {
+      user.setCreatedAt(currentDate);
+    }
+    user.setUpdatedAt(currentDate);
     return userRepository.save(user);
   }
 
@@ -48,7 +55,7 @@ public class UserService {
     User updatedUser = getUserById(user.getUniqueId());
     if (Objects.nonNull(updatedUser)) {
       user.setUniqueId(updatedUser.getUniqueId());
-      return userRepository.save(user);
+      return saveUser(user);
     }
     return null;
   }
