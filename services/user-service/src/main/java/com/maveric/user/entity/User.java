@@ -1,6 +1,8 @@
 package com.maveric.user.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import java.sql.Date;
@@ -10,6 +12,7 @@ import lombok.Data;
 @Entity
 public class User {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int uniqueId;
   @NotNull
   private String firstName;
