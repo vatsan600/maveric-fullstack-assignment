@@ -30,7 +30,6 @@
       <AppenderRef ref="RollingFile" />
     </Root>
 
-    <!-- LOG "com.baeldung*" at TRACE level -->
     <Logger name="com.maveric" level="trace"></Logger>
   </Loggers>
 
