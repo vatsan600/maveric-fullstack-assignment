@@ -23,9 +23,7 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 
   private static final Logger logger = LogManager.getLogger(AccountService.class);
-
   private final AccountRepository accountRepository;
-
   private final UserRestInterface userRestInterface;
 
   public AccountService(AccountRepository accountRepository, UserRestInterface userRestInterface) {
@@ -66,7 +64,7 @@ public class AccountService {
   public Account getAccountById(int customerId, int accountId) {
     logger.info("getting account by id:{}", accountId);
     return Optional.ofNullable(getCustomer(customerId))
-        .map(user -> accountRepository.findById(accountId).orElse(null))
+        .flatMap(user -> accountRepository.findById(accountId))
         .orElse(null);
   }
 
