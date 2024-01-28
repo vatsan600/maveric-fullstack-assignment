@@ -1,4 +1,4 @@
-package com.maveric.account;
+package com.maveric.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
