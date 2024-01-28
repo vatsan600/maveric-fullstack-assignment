@@ -4,7 +4,6 @@ import com.maveric.user.entity.User;
 import com.maveric.user.repository.UserRepository;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,11 +21,6 @@ public class UserService {
 
   public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
-  }
-
-  public List<User> getUsers() {
-    logger.info("getting users");
-    return userRepository.findAll();
   }
 
   public Page<User> getUsersWithPagination(int pageNumber, int pageSize) {
