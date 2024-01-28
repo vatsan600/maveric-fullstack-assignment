@@ -3,7 +3,6 @@ package com.maveric.balance.controller;
 import com.maveric.balance.entity.Balance;
 import com.maveric.balance.model.BalanceRequest;
 import com.maveric.balance.service.BalanceService;
-import jakarta.ws.rs.Path;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;

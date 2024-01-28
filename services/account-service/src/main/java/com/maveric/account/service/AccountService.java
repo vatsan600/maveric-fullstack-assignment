@@ -7,7 +7,6 @@ import com.maveric.account.model.User;
 import com.maveric.account.repository.AccountRepository;
 import com.maveric.account.restinterfaces.UserRestInterface;
 import feign.FeignException;
-import jakarta.ws.rs.NotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +15,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,7 +31,7 @@ public class AccountService {
 
   public List<AccountWithoutBalance> getAccountsWithPagination(int pageNumber, int pageSize,
       int customerId) {
-    logger.info("getting users for page number: {} and page size: {}", pageNumber, pageNumber);
+    logger.info("getting accounts for page number: {} and page size: {}", pageNumber, pageNumber);
     Pageable page = PageRequest.of(pageNumber, pageSize);
     return Optional.ofNullable(getCustomer(customerId)).map(
             user -> accountRepository.findAll(page).map(AccountWithoutBalance::of).stream().toList())
